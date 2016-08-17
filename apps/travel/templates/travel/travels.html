@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Travels</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  </head>
+  <a href="/">Logout</a>
+  <body>
+    <h1>Hello {{user.name}}</h1>
+    <p>
+      Your Trip Schedule
+    </p>
+    <table>
+      <tr>
+        <th>
+          Destination
+        </th>
+        <th>
+          Travel Start Date
+        </th>
+        <th>
+          Travel End Date
+        </th>
+        <th>
+          Plan
+        </th>
+      </tr>
+      {% for t in user_trip %}
+      <tr>
+        <td>
+          <a href="/travels/destination/{{t.id}}">{{t.destination}}</a>
+        </td>
+        <td>
+          {{t.date_from}}
+        </td>
+        <td>
+          {{t.date_to}}
+        </td>
+        <td>
+          {{t.description}}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <h2>Other User's Travel Plans</h2>
+    <table>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Destination
+        </th>
+        <th>
+          Travel Start Date
+        </th>
+        <th>
+          Travel End Date
+        </th>
+        <th>
+          Do You Want to Join?
+        </th>
+      </tr>
+      {% for d in other_trips %}
+      <tr>
+        <td>
+          {{d.name}}
+        </td>
+        <td>
+          <a href="/travels/destination/{{d.id}}">{{d.destination}}</a>
+        </td>
+        <td>
+          {{d.date_from}}
+        </td>
+        <td>
+          {{d.date_to}}
+        </td>
+        <td>
+          <a href="/join/{{d.id}}">Join</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <a href="/travels/add">Add Travel Plan</a>
+  </body>
+</html>

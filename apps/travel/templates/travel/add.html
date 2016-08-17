@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  </head>
+  <body>
+    <a href="/">Logout</a>
+    <a href="/travels">Home</a>
+    <h1>Add Trip</h1>
+    <form class="" action="/add" method="post">
+      {% csrf_token %}
+      Destination: <input type="text" name="tdestination" >
+      Description: <input type="text" name="tdescription" >
+      Travel Date From: <input type="date" name="from" value="">
+      Travel Date To: <input type="date" name="to" value="">
+      <input type="submit" value="Add">
+    </form>
+    {% for m in request.session.tmessage %}
+      <p>
+        {{m}}
+      </p>
+    {% endfor %}
+  </body>
+</html>
