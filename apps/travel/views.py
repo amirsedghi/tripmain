@@ -41,14 +41,19 @@ def register(request):
 def login(request):
     request.session['message'] = []
     user = User.objects.filter(username = request.POST['username'])
-    if request.POST['password'] == user[0].password:
-        request.session['id'] = user[0].id
-        return redirect('/travels')
+    if user:
+        if request.POST['password'] == user[0].password:
+            request.session['id'] = user[0].id
+            return redirect('/travels')
+        else:
+            message = 'your username and password did not match our record'
+            request.session['message'].insert(0, message)
+            return redirect('/')
     else:
         message = 'your username and password did not match our record'
         request.session['message'].insert(0, message)
         return redirect('/')
-
+        
 def travels(request):
     the_user = User.objects.filter(id = request.session['id'])
     user_trip = Trip.objects.filter(user__id = request.session['id'])
