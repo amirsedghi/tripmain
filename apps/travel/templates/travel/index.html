@@ -3,21 +3,51 @@
   <head>
     <meta charset="utf-8">
     <title>Main</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'travel/css/index.css' %}" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   </head>
   <body>
+    <div class="wrapper">
     <h1>Welcome</h1>
     <hr>
     <h2>Register</h2>
     <form class="" action="/register" method="post">
-      {% csrf_token %}
-      Name: <input type="text" name="fullname" value="">
-      Username: <input type="text" name="username" value="">
-      Password: <input type="password" name="password" value="">
-      Confirm PW: <input type="password" name="confirm_password" value="">
+      <div class="register">
+        {% csrf_token %}
+        <div class="register_title">
+          <p>
+            Name:
+          </p>
+          <p>
+            Username:
+          </p>
+          <p>
+            Password:
+          </p>
+          <p>
+            Confirm PW:
+          </p>
+        </div>
+        <div class="register_input">
+          <p>
+            <input type="text" name="fullname" value="">
+          </p>
+          <p>
+            <input type="text" name="username" value="">
+          </p>
+          <p>
+            <input type="password" name="password" value="">
+          </p>
+          <p>
+            <input type="password" name="confirm_password" value="">
+          </p>
+        </div>
+      </div>
       <input type="submit" value="Register">
     </form>
+
     <hr>
     <h2>Login</h2>
     <form class="" action="/login" method="post">
@@ -31,5 +61,6 @@
         {{m}}
       </p>
     {% endfor %}
+  </dv>
   </body>
 </html>

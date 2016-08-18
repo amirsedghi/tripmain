@@ -108,6 +108,8 @@ def inserting(request):
     # from_date = unicodedata.normalize('NFKD', from_date_unicode).encode('ascii','ignore')
 
     to_date = request.POST.get('to', datetime.datetime.now())
+    request.session['destination']  = ''
+    request.session['description'] = ''
     if len(destination)<1 or len(description)<1:
         message = 'please make sure that your destination and description is not empty'
         request.session['tmessage'].insert(0, message)
@@ -129,6 +131,8 @@ def inserting(request):
         UserTrip.objects.create(the_user = the_user, the_trip = the_trip)
         return redirect('/travels')
     else:
+        request.session['destination'] = request.POST['tdestination']
+        request.session['description'] = request.POST['tdescription']
         return redirect('/travels/add')
 
 

@@ -12,8 +12,8 @@
     <h1>Add Trip</h1>
     <form class="" action="/add" method="post">
       {% csrf_token %}
-      Destination: <input type="text" name="tdestination" >
-      Description: <input type="text" name="tdescription" >
+      Destination: <input type="text" name="tdestination" value="{{request.session.destination}}">
+      Description: <input type="text" name="tdescription" value= "{{request.session.description}}" >
       Travel Date From: <input type="date" name="from" value="">
       Travel Date To: <input type="date" name="to" value="">
       <input type="submit" value="Add">

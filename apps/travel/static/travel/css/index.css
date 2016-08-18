@@ -1,3 +1,29 @@
-p{
-  /*yeah man*/
+.wrapper {
+  margin: 0 auto;
+}
+
+.register_input{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.register_title{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.register_title p{
+  margin-bottom: 17px;
+}
+
+
+.test1{
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+}
+
+.test2{
+  display: inline-block;
+  vertical-align: top;
 }
